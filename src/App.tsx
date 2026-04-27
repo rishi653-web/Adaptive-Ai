@@ -6,8 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ShieldCheck, Activity, AlertTriangle, CheckCircle2, Loader2, Cpu,
   BarChart3, AlertCircle, X, Building2, User, Zap, Landmark, Scale,
-  Globe, FileCheck, ChevronRight, Info, Star, Award, ArrowRight,
-  Languages, HelpCircle, MapPin, Radio, Target, Lightbulb,
+  Globe, FileCheck, Info, Star, Award, ArrowRight,
+  Languages, HelpCircle, Radio, Target, Lightbulb,
   ExternalLink, TrendingUp, TrendingDown, RefreshCw,
 } from "lucide-react";
 
@@ -992,9 +992,9 @@ function LandingPage({ lang, setLang, onStart, onSlide }: {
 // ELIGIBILITY LAB (FORM)
 // ════════════════════════════════════════════════════════════════════
 
-function EligibilityLab({ fd, setFd, activeModules, liveSchemes, geoInsight, mode, setMode, lang, onSubmit, onBack, isProcessing }: {
+function EligibilityLab({ fd, setFd, activeModules, liveSchemes, mode, setMode, lang, onSubmit, onBack, isProcessing }: {
   fd: FormData; setFd: React.Dispatch<React.SetStateAction<FormData>>;
-  activeModules: ActiveModule[]; liveSchemes: string[]; geoInsight: GeoInsight | null;
+  activeModules: ActiveModule[]; liveSchemes: string[];
   mode: Mode; setMode: (m: Mode) => void;
   lang: Lang; onSubmit: (e: React.FormEvent) => void;
   onBack: () => void; isProcessing: boolean;
@@ -1824,7 +1824,6 @@ export default function App() {
 
   const activeModules = useMemo(() => getActiveModules(fd), [fd]);
   const liveSchemes = useMemo(() => detectSchemes(fd), [fd]);
-  const geoInsight = useMemo(() => getGeoInsight(fd.state, fd.sector), [fd.state, fd.sector]);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -1901,7 +1900,7 @@ export default function App() {
           <motion.div key="lab" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }}>
             <EligibilityLab
               fd={fd} setFd={setFd}
-              activeModules={activeModules} liveSchemes={liveSchemes} geoInsight={geoInsight}
+              activeModules={activeModules} liveSchemes={liveSchemes}
               mode={mode} setMode={setMode} lang={lang}
               onSubmit={handleSubmit} onBack={() => setPhase("landing")}
               isProcessing={isProcessing}
