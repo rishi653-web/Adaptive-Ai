@@ -2,10 +2,13 @@
   "name": "adaptive-ai",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://rishi653-web.github.io/Adaptive-Ai",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -26,6 +29,7 @@
     "eslint": "^9.39.4",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
+    "gh-pages": "^6.3.0",
     "globals": "^17.4.0",
     "postcss": "^8.5.9",
     "tailwindcss": "^4.2.2",
